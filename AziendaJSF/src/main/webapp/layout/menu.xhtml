@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<h:form>  
+    <p:growl id="messages" showDetail="false"/>
+    
+        <p:commandButton id="dynaButton" value="Show" type="button" icon="ui-icon-extlink"/>
+    <p:menu overlay="true" trigger="dynaButton" my="left top" at="left bottom">
+        <p:submenu label="Clienti">
+            <p:menuitem value="Elenco Clienti" outcome="/admin/elencoClienti" update="messages" icon="ui-icon-person"/>
+            <p:menuitem value="Registra Cliente" actionListener="#{menuView.update}" update="messages" icon="ui-icon-plus"/>
+        </p:submenu>
+        <p:submenu label="Dipendenti">
+                  <p:menuitem value="Elenco Dipendenti" actionListener="#{menuView.save}" update="messages" icon="ui-icon-person"/>
+            <p:menuitem value="Buste Paga" actionListener="#{menuView.update}" update="messages" icon="ui-icon-document"/>
+        </p:submenu>
+        <p:submenu label="Navigations">
+            <p:menuitem value="External" url="http://www.primefaces.org" icon="ui-icon-home"/>
+        </p:submenu>
+    </p:menu>
+    </h:form>
+</html>

@@ -5,7 +5,8 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui"
+	>
 
 <f:metadata>
 <f:event listener="#{clController.updateLista()}" type="preRenderView"/>
@@ -25,8 +26,8 @@
            Film
        </f:facet>
  
-       <p:ajax event="rowEdit" listener="#{dtEditView.onRowEdit}" update=":formClienti:msgs" />
-       <p:ajax event="rowEditCancel" listener="#{dtEditView.onRowCancel}" update=":formClienti:msgs" />
+       <p:ajax event="rowEdit" listener="#{clController.onRowEdit}" update=":formClienti:msgs" />
+       <p:ajax event="rowEditCancel" listener="#{clController.onRowCancel}" update=":formClienti:msgs" />
  
        <p:column headerText="Nome">
            <p:cellEditor>
