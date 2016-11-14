@@ -11,7 +11,7 @@
 <h:form>  
     <p:growl id="messages" showDetail="false"/>
     
-        <p:commandButton id="dynaButton" value="Show" type="button" icon="ui-icon-extlink"/>
+        <p:commandButton id="dynaButton" value="Menu" type="button" icon="ui-icon-extlink"/>
     <p:menu overlay="true" trigger="dynaButton" my="left top" at="left bottom">
         <p:submenu label="Clienti">
             <p:menuitem value="Elenco Clienti" outcome="/admin/elencoClienti" update="messages" icon="ui-icon-person"/>
@@ -25,5 +25,7 @@
             <p:menuitem value="External" url="http://www.primefaces.org" icon="ui-icon-home"/>
         </p:submenu>
     </p:menu>
+    
     </h:form>
+    
 </html>

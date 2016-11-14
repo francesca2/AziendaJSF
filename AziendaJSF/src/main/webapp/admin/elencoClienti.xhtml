@@ -7,18 +7,16 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
 	>
-
+<ui:composition template="../layout/template.xhtml">
+<ui:define name="metadata">
 <f:metadata>
 <f:event listener="#{clController.updateLista()}" type="preRenderView"/>
 </f:metadata>
+</ui:define>
 
-<h:head>
+<ui:define name="content">
 
-</h:head>
-
-<h:body>
-
-<h:form id="formClienti">
+<h:form id="form">
    <p:growl id="msgs" showDetail="true"/>
  
    <p:dataTable id="client" var="client" value="#{clController.listaClienti}" editable="true" style="margin-bottom:20px">
@@ -26,8 +24,8 @@
            Film
        </f:facet>
  
-       <p:ajax event="rowEdit" listener="#{clController.onRowEdit}" update=":formClienti:msgs" />
-       <p:ajax event="rowEditCancel" listener="#{clController.onRowCancel}" update=":formClienti:msgs" />
+       <p:ajax event="rowEdit" listener="#{clController.onRowEdit}" update=":form:msgs" />
+       <p:ajax event="rowEditCancel" listener="#{clController.onRowCancel}" update=":form:msgs" />
  
        <p:column headerText="Nome">
            <p:cellEditor>
@@ -62,7 +60,8 @@
            </p:column>
    </p:dataTable>
    </h:form>
+</ui:define>
 
-</h:body>
+</ui:composition>
 
 </html>
