@@ -23,14 +23,14 @@
 			<p:messages id="msgs" />
 			<h:form>
 Nome:<br />
-				<h:inputText id="nome" value="#{dipendente.nome}" label="Nome"
+				<h:inputText id="nome" value="#{employee.nome}" label="Nome"
 					required="true" requiredMessage="Questo campo è obbligatorio">
 					<f:validateLength minimum="2" />
 				</h:inputText>
 				<h:message for="nome" styleClass="colori" />
 				<br />
 Cognome:<br />
-				<h:inputText id="cognome" value="#{dipendente.cognome}"
+				<h:inputText id="cognome" value="#{employee.cognome}"
 					label="Cognome" required="true"
 					requiredMessage="Questo campo è obbligatorio">
 					<f:validateLength minimum="2" />
@@ -38,7 +38,7 @@ Cognome:<br />
 				<h:message for="cognome" styleClass="colori" />
 				<br />
  Username:<br />
-				<h:inputText id="username" value="#{dipendente.username}"
+				<h:inputText id="username" value="#{employee.username}"
 					label="Username" required="true"
 					requiredMessage="Questo campo è obbligatorio"
 					validatorMessage="Lo username deve essere almeno 4 caratteri!">
@@ -47,15 +47,16 @@ Cognome:<br />
 				<h:message for="username" styleClass="colori" />
 				<br />
 Password:<br />
-				<h:inputSecret id="password" value="#{dipendente.password}" />
+				<h:inputSecret id="password" value="#{employee.password}" />
 				<br />
 Posizione:<br />
-				<h:selectOneMenu value="#{dipendente.posizione}" style="width:100%">
-					<f:selectItems value="#{dpController.posizioni}" var="man" itemLabel="#{man}" itemValue="#{man}"/>
+				<h:selectOneMenu value="#{employee.posizione}"
+					styleClass="input-text">
+					<f:selectItems value="#{dpController.posizioni}"></f:selectItems>
 				</h:selectOneMenu>
 				<br />
 Stipendio:<br />
-				<h:inputText id="stipendioD" value="#{dipendente.stipendio}"
+				<h:inputText id="stipendioD" value="#{employee.stipendio}"
 					label="StipendioD" required="true"
 					requiredMessage="Questo campo è obbligatorio"
 					validatorMessage="Lo stipendio deve essere compreso tra 100 e 9999.9">
@@ -64,7 +65,7 @@ Stipendio:<br />
 				<h:message for="stipendioD" styleClass="colori" />
 				<br />
 				<h:commandButton value="Registra"
-					action="#{dpController.aggiungiDipendente(dipendente)}" />
+					action="#{dpController.aggiungiDipendente(employee)}" />
 			</h:form>
 		</p:panel>
 	</ui:define>

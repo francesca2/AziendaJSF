@@ -3,6 +3,7 @@ package it.alfasoft.francesca.service;
 import java.util.List;
 
 import it.alfasoft.francesca.bean.AdminBean;
+import it.alfasoft.francesca.bean.BustaPaga;
 import it.alfasoft.francesca.bean.ClienteBean;
 import it.alfasoft.francesca.bean.DipendenteBean;
 import it.alfasoft.francesca.bean.UtenteBean;
@@ -13,7 +14,6 @@ import it.alfasoft.francesca.dao.DipendenteDao;
 import it.alfasoft.francesca.dao.RubricaDao;
 import it.alfasoft.francesca.dao.UtenteDao;
 import it.alfasoft.francesca.dao.VoceDao;
-import it.alfasoft.francesca.model.BustaPaga;
 import it.alfasoft.francesca.model.Rubrica;
 import it.alfasoft.francesca.model.Voce;
 import it.alfasoft.francesca.utility.PasswordCodification;

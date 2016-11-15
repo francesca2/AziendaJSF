@@ -1,16 +1,15 @@
-package it.alfasoft.francesca.model;
+package it.alfasoft.francesca.bean;
 
 import java.util.List;
 
-import it.alfasoft.francesca.bean.DipendenteBean;
 import it.alfasoft.francesca.dao.DipendenteDao;
 import it.alfasoft.francesca.utility.IsValid;
 
+import javax.faces.bean.ManagedBean;
 import javax.persistence.*;
 
-
-
 @Entity
+@ManagedBean(name="busta", eager=true)
 public class BustaPaga implements IsValid {
 
 	@Id 

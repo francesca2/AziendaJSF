@@ -1,6 +1,5 @@
 package it.alfasoft.francesca.bean;
 
-import it.alfasoft.francesca.model.BustaPaga;
 import it.alfasoft.francesca.utility.IsValid;
 
 import java.util.HashSet;
@@ -14,7 +13,7 @@ import org.hibernate.annotations.NotFoundAction;
 
 
 @Entity
-@ManagedBean(name="dipendente", eager=true)
+@ManagedBean(name="employee", eager=true)
 public class DipendenteBean extends UtenteBean implements IsValid {
 
 	/**

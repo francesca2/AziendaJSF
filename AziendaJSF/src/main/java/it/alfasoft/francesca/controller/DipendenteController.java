@@ -4,6 +4,7 @@ import it.alfasoft.francesca.bean.DipendenteBean;
 import it.alfasoft.francesca.service.Servizi;
 
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -51,9 +52,9 @@ public class DipendenteController implements Serializable {
 		s=new Servizi();
 	}
 	
-	public static String[] getPosizioni() {
-		return posizioni;
-	}
+    public List<String> getPosizioni() {
+        return Arrays.asList(posizioni);
+    }
 
 	public List<DipendenteBean> getListaDipendenti() {
 		return listaDipendenti;
@@ -102,7 +103,7 @@ public class DipendenteController implements Serializable {
     	else{
     		FacesContext.getCurrentInstance().addMessage(null,
                     new FacesMessage("Username già in uso"));
-    		return "registraClienti";
+    		return "registraDipendente";
     	}
     }
 

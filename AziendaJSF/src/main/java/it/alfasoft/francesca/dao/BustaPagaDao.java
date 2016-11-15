@@ -1,7 +1,7 @@
 package it.alfasoft.francesca.dao;
 
+import it.alfasoft.francesca.bean.BustaPaga;
 import it.alfasoft.francesca.bean.DipendenteBean;
-import it.alfasoft.francesca.model.BustaPaga;
 import it.alfasoft.francesca.utility.HibernateUtil;
 
 import java.util.ArrayList;
