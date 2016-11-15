@@ -57,11 +57,6 @@ public class ClientController implements Serializable {
 		return serialVersionUID;
 	}
 	
-	public String aggiungiCliente(ClienteBean c){
-		s.registraCliente(c);
-		return "elencoClienti?faces-redirect=true";
-	}
-	
 	public List<ClienteBean> updateLista(){
 		this.setListaClienti(s.getClienti());
 		return listaClienti;
@@ -69,14 +64,28 @@ public class ClientController implements Serializable {
 	
 	public void onRowEdit(RowEditEvent event) {
 		s.saveCliente((ClienteBean) event.getObject());
-        FacesMessage msg = new FacesMessage("Film Edited", ((ClienteBean) event.getObject()).getNome());
+        FacesMessage msg = new FacesMessage("Cliente salvato", ((ClienteBean) event.getObject()).getNome());
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
      
     public void onRowCancel(RowEditEvent event) {
     	s.eliminaUtente((ClienteBean) event.getObject());
-        FacesMessage msg = new FacesMessage("Edit Cancelled", ((ClienteBean) event.getObject()).getNome());
+        FacesMessage msg = new FacesMessage("Cliente eliminato", ((ClienteBean) event.getObject()).getNome());
         FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+    
+    public String aggiungiCliente(ClienteBean c){
+    	String usnm=c.getUsername();  	
+    	if(!s.trovaUsername(usnm)){
+    		s.registraCliente(c);
+    		return "elencoClienti?faces-redirect=true";
+    	}
+    	
+    	else{
+    		FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage("Username già in uso"));
+    		return "registraClienti";
+    	}
     }
 
 }

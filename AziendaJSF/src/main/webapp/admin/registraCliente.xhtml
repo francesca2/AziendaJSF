@@ -4,17 +4,67 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 
-<ui:composition template="">
-	<ui:define name="header">
-	    Add your header here or delete to use the default
-	</ui:define>
+<ui:define name="head">
+	<style>
+.colori {
+	color: red;
+}
+</style>
+</ui:define>
+
+<ui:composition template="../layout/templateAdmin.xhtml">
 	<ui:define name="content">
-	    Add your content here or delete to use the default
-	</ui:define>
-	<ui:define name="footer">
-	    Add your footer here or delete to use the default
+
+		<p:panel id="panel" header="Nuovo Cliente">
+
+			<p:messages id="msgs" />
+			<h:form>
+Nome:<br />
+				<h:inputText id="nome" value="#{cliente.nome}" label="Nome"
+					required="true" requiredMessage="Questo campo è obbligatorio">
+					<f:validateLength minimum="2" />
+				</h:inputText>
+				<h:message for="nome" styleClass="colori" />
+				<br />
+Cognome:<br />
+				<h:inputText id="cognome" value="#{cliente.cognome}" label="Cognome"
+					required="true" requiredMessage="Questo campo è obbligatorio">
+					<f:validateLength minimum="2" />
+				</h:inputText>
+				<h:message for="cognome" styleClass="colori" />
+				<br />
+ Username:<br />
+				<h:inputText id="username" value="#{cliente.username}"
+					label="Username" required="true"
+					requiredMessage="Questo campo è obbligatorio">
+					<f:validateLength minimum="4" />
+				</h:inputText>
+				<h:message for="username" styleClass="colori" />
+				<br />
+Password:<br />
+				<h:inputSecret id="password" value="#{cliente.password}" />
+				<br />
+ Ragione Sociale:<br />
+				<h:inputText id="ragioneS" value="#{cliente.ragioneSociale}"
+					label="RagioneS">
+					<f:validateLength minimum="3" />
+				</h:inputText>
+				<h:message for="ragioneS" styleClass="colori" />
+				<br />
+ Partita iva:<br />
+				<h:inputText id="pIVA" value="#{cliente.pIVA}" label="Piva"
+					required="true" requiredMessage="Questo campo è obbligatorio">
+					<f:validateLength minimum="11" maximum="11" />
+				</h:inputText>
+				<h:message for="pIVA" styleClass="colori" />
+				<br />
+				<h:commandButton value="Registra"
+					action="#{clController.aggiungiCliente(cliente)}" />
+			</h:form>
+		</p:panel>
 	</ui:define>
 </ui:composition>
 </html>
