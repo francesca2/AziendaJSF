@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:define name="head">
+	<style>
+.colori {
+	color: red;
+}
+</style>
+</ui:define>
+
+<ui:composition template="../layout/templateAdmin.xhtml">
+	<ui:define name="content">
+
+		<p:panel id="panel" header="Nuova Busta Paga">
+
+			<p:messages id="msgs" />
+			<h:form>
+Dipendente:<br />
+				<h:selectOneMenu value="#{busta.dipendente}"
+					styleClass="input-text">
+					<f:selectItems value="#{dpController.listaDipendenti}"></f:selectItems>
+				</h:selectOneMenu>
+				<br />
+Data di emissione:<br />
+				<p:calendar id="mask" value="#{busta.data}" pattern="dd/MM/yyyy" mask="true" />
+				<br />
+Importo:<br />
+				<h:inputText id="importo" value="#{busta.importo}"
+					label="Importo" required="true"
+					requiredMessage="Questo campo è obbligatorio"
+					validatorMessage="Lo stipendio deve essere compreso tra 100 e 9999.9">
+					<f:validateLength minimum="5" maximum="6" />
+				</h:inputText>
+				<h:message for="stipendioD" styleClass="colori" />
+				<br />
+				<h:commandButton value="Registra"
+					action="#{dpController.aggiungiDipendente(dipendente)}" />
+			</h:form>
+		</p:panel>
+	</ui:define>
+</ui:composition>
+</html>
