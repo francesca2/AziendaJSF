@@ -18,51 +18,53 @@
 <ui:composition template="../layout/templateAdmin.xhtml">
 	<ui:define name="content">
 
-		<p:panel id="panel" header="Nuovo Cliente">
+		<p:panel id="panel" header="Nuovo Dipendente">
 
 			<p:messages id="msgs" />
 			<h:form>
 Nome:<br />
-				<h:inputText id="nome" value="#{client.nome}" label="Nome"
+				<h:inputText id="nome" value="#{dipendente.nome}" label="Nome"
 					required="true" requiredMessage="Questo campo è obbligatorio">
 					<f:validateLength minimum="2" />
 				</h:inputText>
 				<h:message for="nome" styleClass="colori" />
 				<br />
 Cognome:<br />
-				<h:inputText id="cognome" value="#{client.cognome}" label="Cognome"
-					required="true" requiredMessage="Questo campo è obbligatorio">
+				<h:inputText id="cognome" value="#{dipendente.cognome}"
+					label="Cognome" required="true"
+					requiredMessage="Questo campo è obbligatorio">
 					<f:validateLength minimum="2" />
 				</h:inputText>
 				<h:message for="cognome" styleClass="colori" />
 				<br />
  Username:<br />
-				<h:inputText id="username" value="#{client.username}"
+				<h:inputText id="username" value="#{dipendente.username}"
 					label="Username" required="true"
-					requiredMessage="Questo campo è obbligatorio">
+					requiredMessage="Questo campo è obbligatorio"
+					validatorMessage="Lo username deve essere almeno 4 caratteri!">
 					<f:validateLength minimum="4" />
 				</h:inputText>
 				<h:message for="username" styleClass="colori" />
 				<br />
 Password:<br />
-				<h:inputSecret id="password" value="#{client.password}" />
+				<h:inputSecret id="password" value="#{dipendente.password}" />
 				<br />
- Ragione Sociale:<br />
-				<h:inputText id="ragioneS" value="#{client.ragioneSociale}"
-					label="RagioneS">
-					<f:validateLength minimum="3" />
-				</h:inputText>
-				<h:message for="ragioneS" styleClass="colori" />
+Posizione:<br />
+				<h:selectOneMenu value="#{dipendente.posizione}" style="width:100%">
+					<f:selectItems value="#{dpController.posizioni}" var="man" itemLabel="#{man}" itemValue="#{man}"/>
+				</h:selectOneMenu>
 				<br />
- Partita iva:<br />
-				<h:inputText id="pIVA" value="#{client.pIVA}" label="Piva"
-					required="true" requiredMessage="Questo campo è obbligatorio">
-					<f:validateLength minimum="11" maximum="11" />
+Stipendio:<br />
+				<h:inputText id="stipendioD" value="#{dipendente.stipendio}"
+					label="StipendioD" required="true"
+					requiredMessage="Questo campo è obbligatorio"
+					validatorMessage="Lo stipendio deve essere compreso tra 100 e 9999.9">
+					<f:validateLength minimum="5" maximum="6" />
 				</h:inputText>
-				<h:message for="pIVA" styleClass="colori" />
+				<h:message for="stipendioD" styleClass="colori" />
 				<br />
 				<h:commandButton value="Registra"
-					action="#{clController.aggiungiCliente(client)}" />
+					action="#{dpController.aggiungiDipendente(dipendente)}" />
 			</h:form>
 		</p:panel>
 	</ui:define>

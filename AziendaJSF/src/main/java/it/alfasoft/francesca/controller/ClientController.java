@@ -1,7 +1,6 @@
 package it.alfasoft.francesca.controller;
 
 import it.alfasoft.francesca.bean.ClienteBean;
-import it.alfasoft.francesca.bean.UtenteBean;
 import it.alfasoft.francesca.service.Servizi;
 
 import java.io.Serializable;
@@ -84,7 +83,7 @@ public class ClientController implements Serializable {
     	else{
     		FacesContext.getCurrentInstance().addMessage(null,
                     new FacesMessage("Username già in uso"));
-    		return "registraClienti";
+    		return "registraCliente";
     	}
     }
 
