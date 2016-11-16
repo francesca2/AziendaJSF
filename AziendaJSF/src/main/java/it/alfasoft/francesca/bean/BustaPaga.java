@@ -1,5 +1,6 @@
 package it.alfasoft.francesca.bean;
 
+import java.util.Date;
 import java.util.List;
 
 import it.alfasoft.francesca.dao.DipendenteDao;
@@ -19,7 +20,7 @@ public class BustaPaga implements IsValid {
 	@ManyToOne
 	private DipendenteBean dipendente;
 	
-	private String data;
+	private Date data;
 	private long importo;
 	
 	public BustaPaga() {
@@ -40,12 +41,12 @@ public class BustaPaga implements IsValid {
 	public void setDipendente(DipendenteBean dipendente) {
 		this.dipendente = dipendente;
 	}
-	
-	public String getData() {
+
+	public Date getData() {
 		return data;
 	}
 
-	public void setData(String data) {
+	public void setData(Date data) {
 		this.data = data;
 	}
 

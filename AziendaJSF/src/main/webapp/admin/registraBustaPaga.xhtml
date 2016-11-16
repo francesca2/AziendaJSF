@@ -16,6 +16,14 @@
 </ui:define>
 
 <ui:composition template="../layout/templateAdmin.xhtml">
+
+<ui:define name="metadata">
+<f:metadata>
+<f:event listener="#{dpController.updateMappaDipendenti()}" type="preRenderView"/>
+</f:metadata>
+</ui:define>
+
+
 	<ui:define name="content">
 
 		<p:panel id="panel" header="Nuova Busta Paga">
@@ -23,9 +31,9 @@
 			<p:messages id="msgs" />
 			<h:form>
 Dipendente:<br />
-				<h:selectOneMenu value="#{busta.dipendente}"
+				<h:selectOneMenu value="#{dpController.idDip}"
 					styleClass="input-text">
-					<f:selectItems value="#{dpController.listaDipendenti}"></f:selectItems>
+					<f:selectItems value="#{dpController.getMappaDipendenti()}"></f:selectItems>
 				</h:selectOneMenu>
 				<br />
 Data di emissione:<br />
@@ -35,13 +43,13 @@ Importo:<br />
 				<h:inputText id="importo" value="#{busta.importo}"
 					label="Importo" required="true"
 					requiredMessage="Questo campo è obbligatorio"
-					validatorMessage="Lo stipendio deve essere compreso tra 100 e 9999.9">
-					<f:validateLength minimum="5" maximum="6" />
+					validatorMessage="L'importo non è adeguato!">
+					<f:validateLongRange minimum="800" maximum="3500"/>
 				</h:inputText>
-				<h:message for="stipendioD" styleClass="colori" />
+				<h:message for="importo" styleClass="colori" />
 				<br />
 				<h:commandButton value="Registra"
-					action="#{dpController.aggiungiDipendente(dipendente)}" />
+					action="#{dpController.registraBustaPaga(busta)}" />
 			</h:form>
 		</p:panel>
 	</ui:define>
