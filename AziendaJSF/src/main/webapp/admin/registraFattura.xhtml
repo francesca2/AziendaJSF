@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:define name="head">
+	<style>
+.colori {
+	color: red;
+}
+</style>
+</ui:define>
+
+<ui:composition template="../layout/templateAdmin.xhtml">
+	<ui:define name="content">
+
+		<p:panel id="panel" header="Nuova Fattura">
+
+			<p:messages id="msgs" />
+			<h:form>
+Data di emissione:<br />
+				<p:calendar id="mask" value="#{fattura.dataEmissione}" pattern="dd/MM/yyyy" mask="true" />
+				<br />
+Importo:<br />
+				<h:inputText id="importo" value="#{fattura.importo}"
+					label="Importo" required="true"
+					requiredMessage="Questo campo è obbligatorio">
+				</h:inputText>
+				<h:message for="importo" styleClass="colori" />
+				<br />
+Codice fattura:<br />
+				<h:inputText id="codice" value="#{fattura.codiceFattura}"
+					label="Codice" required="true"
+					requiredMessage="Questo campo è obbligatorio">
+				</h:inputText>
+				<h:message for="codice" styleClass="colori" />
+				<br />
+				<h:commandButton value="Registra"
+					action="#{fatController.registraFattura()}" />
+			</h:form>
+		</p:panel>
+	</ui:define>
+</ui:composition>
+</html>

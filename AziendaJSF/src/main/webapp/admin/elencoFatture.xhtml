@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="../layout/templateAdmin.xhtml">
+<ui:define name="metadata">
+<f:metadata>
+<f:event listener="#{fatController.updateLista()}" type="preRenderView"/>
+</f:metadata>
+</ui:define>
+
+<ui:define name="content">
+
+<h:form id="form">
+   <p:growl id="msgs" showDetail="true"/>
+ 
+   <p:dataTable id="fattura" var="fattura" value="#{fatController.listaClienti}" editable="true" style="margin-bottom:20px">
+       <f:facet name="header">
+           Clienti
+       </f:facet>
+ 
+       <p:ajax event="rowEdit" listener="#{fatController.onRowEdit}" update=":form:msgs" />
+       <p:ajax event="rowEditCancel" listener="#{fatController.onRowCancel}" update=":form:msgs" />
+ 
+       <p:column headerText="Codice Fattura">
+           <p:cellEditor>
+               <f:facet name="output"><h:outputText value="#{fattura.codiceFattura}" /></f:facet>
+               <f:facet name="input"><p:inputText id="modelInput" value="#{fattura.codiceFattura}" style="width:100%"/></f:facet>
+           </p:cellEditor>
+       </p:column>
+ 
+       <p:column headerText="Data">
+           <p:cellEditor>
+               <f:facet name="output"><h:outputText value="#{fattura.dataEmissione}" /></f:facet>
+               <f:facet name="input"><p:inputText value="#{fattura.dataEmissione}" style="width:100%"/></f:facet>
+           </p:cellEditor>
+       </p:column>
+ 
+       <p:column headerText="Importo">
+           <p:cellEditor>
+  				 <f:facet name="output"><h:outputText value="#{fattura.importo}" /></f:facet>
+               <f:facet name="input"><p:inputText value="#{fattura.importo}" style="width:100%"/></f:facet>
+           </p:cellEditor>
+       </p:column>
+ 
+       <p:column style="width:32px">
+           <p:rowEditor />
+           </p:column>
+   </p:dataTable>
+   </h:form>
+</ui:define>
+
+</ui:composition>
+
+</html>
