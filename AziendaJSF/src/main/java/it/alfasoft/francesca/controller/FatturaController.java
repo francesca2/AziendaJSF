@@ -14,6 +14,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.ws.rs.client.Entity;
+import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.Response;
 
 import org.primefaces.event.RowEditEvent;
@@ -58,6 +59,10 @@ public class FatturaController {
     	return "registraFattura?faces-reidrect-true";
     }
 	
-    
+	public List<FatturaBean> updateLista(){
+		Response risposta=invocazione.richiestaFatture().invoke();
+		this.setFatture(risposta.readEntity(new GenericType<List<FatturaBean>>(){}));
+		return fatture;
+	}
 
 }

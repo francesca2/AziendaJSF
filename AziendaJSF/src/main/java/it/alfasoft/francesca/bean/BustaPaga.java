@@ -8,9 +8,11 @@ import it.alfasoft.francesca.utility.IsValid;
 
 import javax.faces.bean.ManagedBean;
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @ManagedBean(name="busta", eager=true)
+@XmlRootElement
 public class BustaPaga implements IsValid {
 
 	@Id 

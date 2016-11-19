@@ -3,8 +3,10 @@ package it.alfasoft.francesca.bean;
 import java.util.Date;
 
 import javax.faces.bean.ManagedBean;
+import javax.xml.bind.annotation.XmlRootElement;
 
 @ManagedBean(name="fattura", eager=true)
+@XmlRootElement
 public class FatturaBean {
 	
 	private Date dataEmissione;
