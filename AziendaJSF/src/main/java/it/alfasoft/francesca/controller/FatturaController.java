@@ -2,11 +2,8 @@ package it.alfasoft.francesca.controller;
 
 import java.util.List;
 
-import it.alfasoft.francesca.bean.BustaPaga;
-import it.alfasoft.francesca.bean.DipendenteBean;
 import it.alfasoft.francesca.bean.FatturaBean;
 import it.alfasoft.francesca.client.Invocazione;
-import it.alfasoft.francesca.service.Servizi;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
@@ -43,19 +40,23 @@ public class FatturaController {
 	}
 	
 	public void onRowEdit(RowEditEvent event) {
-		//invocazione.sendFattura((FatturaBean) event.getObject()).invoke();
+		//invocazione.putFattura((FatturaBean) event.getObject()).invoke();
         FacesMessage msg = new FacesMessage("Fattura salvata", ((FatturaBean) event.getObject()).getCodiceFattura());
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
      
     public void onRowCancel(RowEditEvent event) {
-    	//s.eliminaUtente((FatturaBean) event.getObject());
+    	//invocazione.deleteFattura((FatturaBean) event.getObject()).invoke();
         FacesMessage msg = new FacesMessage("Fattura eliminata", ((FatturaBean) event.getObject()).getCodiceFattura());
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
 	
     public String registraFattura(FatturaBean f){
-    	Response responsePost= invocazione.sendFattura(f).invoke();   	
+    	Response responsePost= invocazione.sendFattura(f).invoke(); 
+    	if(responsePost.getStatus()!=201){
+    		FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage("Fattura non registrata!"));
+    	}
     	return "registraFattura?faces-reidrect-true";
     }
 	

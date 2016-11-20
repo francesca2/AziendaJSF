@@ -11,7 +11,7 @@ import javax.ws.rs.client.WebTarget;
 public class Invocazione {
 
 	private Client cliente= ClientBuilder.newClient();
-	private WebTarget baseTarget= cliente.target("http://localhost:8085/AziendaIBM/alfasoft/fatture");
+	private WebTarget baseTarget= cliente.target("http://localhost:8085/AziendaIBM/alfasoft/resources");
 	public Invocazione() {
 	}
 
@@ -31,7 +31,7 @@ public class Invocazione {
 	}
 	
 	public Invocation richiestaFatture(){
-		return baseTarget.path("").request().buildGet();
+		return baseTarget.path("/listaFatture").request().buildGet();
 	}
 	
 }
