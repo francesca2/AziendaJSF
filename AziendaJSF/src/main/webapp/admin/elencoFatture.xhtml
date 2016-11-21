@@ -16,21 +16,12 @@
 
 <ui:define name="content">
 
-<h:form id="form">
-   <p:growl id="msgs" showDetail="true"/>
-   
-   				<h:panelGrid id="searchCode" cellpadding="5" columns="2"
-					style="margin-bottom:10px">
-
-					<h:outputText />
-					<h:outputText value="Filtra per anno" style="font-weight:bold" />
-
-					<h:outputLabel value="Anno: " style="font-weight:bold" />
-					<p:inputText id="anno" value="#{anno}">
-						<p:ajax event="keyup"
-							listener="#{fatController.getFattureAnno(anno)}" />
-					</p:inputText>
-				</h:panelGrid>
+<h:form>
+    <h:panelGrid columns="4" cellpadding="5">
+        <h:outputLabel for="anno" value="Filtra per anno:" style="font-weight:bold" />
+					<p:calendar value="#{anno}" navigator="true" yearRange="-5" showOn="button" />
+ <p:commandButton value="Filtre" update="fattura" actionListener="#{fatController.getFattureAnno(anno)}"/>
+    </h:panelGrid>
  
    <p:dataTable id="fattura" var="fattura" value="#{fatController.fatture}" editable="true" style="margin-bottom:20px">
        <f:facet name="header">

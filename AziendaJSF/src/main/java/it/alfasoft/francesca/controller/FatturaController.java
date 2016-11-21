@@ -92,10 +92,10 @@ public class FatturaController implements Serializable {
 		
 	}
 	
-//	public List<FatturaBean> getFattureAnno(String anno){
-//		Response risposta=invocazione.richiestaFattureAnno(anno).invoke();
-//		this.setFatture(risposta.readEntity(new GenericType<List<FatturaBean>>(){}));
-//		return fatture;
-//	}
+	public List<FatturaBean> getFattureAnno(String anno){
+		Response risposta=invocazione.richiestaFattureAnno(anno).invoke();
+		this.setFatture(risposta.readEntity(new GenericType<List<FatturaBean>>(){}));
+		return fatture;
+	}
 
 }
