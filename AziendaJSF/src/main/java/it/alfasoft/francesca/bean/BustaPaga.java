@@ -1,5 +1,6 @@
 package it.alfasoft.francesca.bean;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -12,8 +13,12 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @ManagedBean(name="busta", eager=true)
-@XmlRootElement
-public class BustaPaga implements IsValid {
+public class BustaPaga implements IsValid, Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Id 
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -58,6 +63,10 @@ public class BustaPaga implements IsValid {
 
 	public void setImporto(long importo) {
 		this.importo = importo;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 	@Override

@@ -21,10 +21,14 @@ import org.primefaces.event.RowEditEvent;
 @ViewScoped
 public class FatturaController implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private Invocazione invocazione;
 	private List<FatturaBean> fatture;
 	private FatturaBean f;
-	private String codice;
 
 	public FatturaController() {
 	}
@@ -48,14 +52,6 @@ public class FatturaController implements Serializable {
 
 	public void setF(FatturaBean f) {
 		this.f = f;
-	}
-
-	public String getCodice() {
-		return codice;
-	}
-
-	public void setCodice(String codice) {
-		this.codice = codice;
 	}
 
 	public void onRowEdit(RowEditEvent event) {
@@ -96,10 +92,10 @@ public class FatturaController implements Serializable {
 		
 	}
 	
-	public List<FatturaBean> getFattureAnno(String anno){
-		Response risposta=invocazione.richiestaFattureAnno(anno).invoke();
-		this.setFatture(risposta.readEntity(new GenericType<List<FatturaBean>>(){}));
-		return fatture;
-	}
+//	public List<FatturaBean> getFattureAnno(String anno){
+//		Response risposta=invocazione.richiestaFattureAnno(anno).invoke();
+//		this.setFatture(risposta.readEntity(new GenericType<List<FatturaBean>>(){}));
+//		return fatture;
+//	}
 
 }

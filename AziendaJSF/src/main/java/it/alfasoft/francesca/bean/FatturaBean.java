@@ -1,5 +1,6 @@
 package it.alfasoft.francesca.bean;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.faces.bean.ManagedBean;
@@ -7,7 +8,12 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @ManagedBean(name="fattura", eager=true)
 @XmlRootElement
-public class FatturaBean {
+public class FatturaBean implements Serializable {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	
 	private Date dataEmissione;
 	private double importo;
@@ -38,6 +44,10 @@ public class FatturaBean {
 
 	public void setCodiceFattura(String codiceFattura) {
 		this.codiceFattura = codiceFattura;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 	
 }
