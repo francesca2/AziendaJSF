@@ -1,5 +1,6 @@
 package it.alfasoft.francesca.controller;
 
+import java.io.Serializable;
 import java.util.List;
 
 import it.alfasoft.francesca.bean.FatturaBean;
@@ -18,10 +19,12 @@ import org.primefaces.event.RowEditEvent;
 
 @ManagedBean(name="fatController", eager=true)
 @ViewScoped
-public class FatturaController {
+public class FatturaController implements Serializable {
 	
 	private Invocazione invocazione;
 	private List<FatturaBean> fatture;
+	private FatturaBean f;
+	private String codice;
 
 	public FatturaController() {
 	}
@@ -39,6 +42,22 @@ public class FatturaController {
 		this.fatture = fatture;
 	}
 	
+	public FatturaBean getF() {
+		return f;
+	}
+
+	public void setF(FatturaBean f) {
+		this.f = f;
+	}
+
+	public String getCodice() {
+		return codice;
+	}
+
+	public void setCodice(String codice) {
+		this.codice = codice;
+	}
+
 	public void onRowEdit(RowEditEvent event) {
 		//invocazione.putFattura((FatturaBean) event.getObject()).invoke();
         FacesMessage msg = new FacesMessage("Fattura salvata", ((FatturaBean) event.getObject()).getCodiceFattura());
@@ -62,6 +81,23 @@ public class FatturaController {
 	
 	public List<FatturaBean> updateLista(){
 		Response risposta=invocazione.richiestaFatture().invoke();
+		this.setFatture(risposta.readEntity(new GenericType<List<FatturaBean>>(){}));
+		return fatture;
+	}
+	
+	public FatturaBean getFatturaByCode(String code){
+		Response risposta=invocazione.richiestaFatturaByCode(code).invoke();
+		this.setF(risposta.readEntity(FatturaBean.class));
+//    	if(risposta.getStatus()!=200){
+//    		FacesContext.getCurrentInstance().addMessage(null,
+//                    new FacesMessage("Fattura non trovata!"));
+//    	}
+		return f;
+		
+	}
+	
+	public List<FatturaBean> getFattureAnno(String anno){
+		Response risposta=invocazione.richiestaFattureAnno(anno).invoke();
 		this.setFatture(risposta.readEntity(new GenericType<List<FatturaBean>>(){}));
 		return fatture;
 	}

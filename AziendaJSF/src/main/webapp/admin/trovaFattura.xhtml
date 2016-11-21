@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:define name="head">
+	<style>
+.colori {
+	color: red;
+}
+</style>
+</ui:define>
+
+<ui:composition template="../layout/templateAdmin.xhtml">
+	<ui:define name="content">
+		<p:panel id="panel" header="Trova Fattura">
+
+			<p:messages id="msgs" />
+			<h:form>
+
+				<h:panelGrid id="searchCode" cellpadding="5" columns="2"
+					style="margin-bottom:10px">
+
+					<h:outputText />
+					<h:outputText value="Cerca tramite codice" style="font-weight:bold" />
+
+					<h:outputLabel value="Codice: " style="font-weight:bold" />
+					<p:inputText id="code1" value="#{codice}">
+						<p:ajax event="keyup" update="fattura"
+							listener="#{fatController.getFatturaByCode(codice)}" />
+					</p:inputText>
+				</h:panelGrid>
+
+				<p:dataTable id="fattura" var="f" value="#{fatController.f}"
+					editable="true" style="margin-bottom:20px">
+					<f:facet name="header">
+           Fattura
+       </f:facet>
+
+					<!--        <p:ajax event="rowEdit" listener="#{fatController.onRowEdit}" update=":form:msgs" /> -->
+					<!--        <p:ajax event="rowEditCancel" listener="#{fatController.onRowCancel}" update=":form:msgs" /> -->
+
+					<p:column headerText="Codice Fattura">
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText value="#{f.codiceFattura}" />
+							</f:facet>
+							<f:facet name="input">
+								<p:inputText id="modelInput" value="#{f.codiceFattura}"
+									style="width:100%" />
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+
+					<p:column headerText="Data">
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText value="#{f.dataEmissione}" />
+							</f:facet>
+							<f:facet name="input">
+								<p:inputText value="#{f.dataEmissione}" style="width:100%" />
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+
+					<p:column headerText="Importo">
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText value="#{f.importo}" />
+							</f:facet>
+							<f:facet name="input">
+								<p:inputText value="#{f.importo}" style="width:100%" />
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+
+					<p:column style="width:32px">
+						<p:rowEditor />
+					</p:column>
+				</p:dataTable>
+
+			</h:form>
+		</p:panel>
+	</ui:define>
+</ui:composition>
+</html>
