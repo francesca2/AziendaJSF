@@ -5,6 +5,7 @@ import java.util.List;
 
 import it.alfasoft.francesca.bean.FatturaBean;
 import it.alfasoft.francesca.client.Invocazione;
+import it.alfasoft.francesca.client.InvocazioneFatture;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
@@ -26,7 +27,7 @@ public class FatturaController implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private Invocazione invocazione;
+	private InvocazioneFatture invocazione;
 	private List<FatturaBean> fatture;
 	private FatturaBean f;
 
@@ -35,7 +36,7 @@ public class FatturaController implements Serializable {
 
 	@PostConstruct
 	public void init(){
-		invocazione= new Invocazione();
+		invocazione= new InvocazioneFatture();
 	}
 
 	public List<FatturaBean> getFatture() {

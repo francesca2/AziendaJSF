@@ -8,34 +8,17 @@ import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.Invocation;
 import javax.ws.rs.client.WebTarget;
 
-public class Invocazione {
+public abstract class Invocazione {
 
-	private Client cliente= ClientBuilder.newClient();
-	private WebTarget baseTarget= cliente.target("http://localhost:5085/AziendaIBM1/alfasoft/fatture");
-	public Invocazione() {
-	}
-
-	public Invocation richiestaFatturaByCode(String code){
-
-		return baseTarget.path(code).request().buildGet();
-	}
+	protected Client cliente= ClientBuilder.newClient();
+	protected WebTarget baseTarget= cliente.target("http://localhost:5085/AziendaIBM1/alfasoft/fatture");
 	
-	public Invocation richiestaFattureAnno(String anno){
-
-		return baseTarget.path(anno).request().buildGet();
-	}
-
-	public Invocation sendFattura(FatturaBean f){
-
-		return baseTarget.path("/registrazione").request().buildPost(Entity.json(f));
-	}
+	abstract Invocation richiestaFatturaByCode(String code);
 	
-	public Invocation richiestaFatture(){
-		return baseTarget.request().buildGet();
-	}
+	abstract Invocation sendFattura(FatturaBean f);
 	
-	public Invocation richiestaFatturaMese(String anno,String mese){
-
-		return baseTarget.path(mese).path(anno).request().buildGet();
-	}
+	abstract Invocation richiestaFatture();
+	
+	abstract Invocation  richiestaFatturaMese(String anno,String mese);
+	
 }
