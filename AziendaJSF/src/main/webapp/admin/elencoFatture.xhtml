@@ -8,15 +8,38 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <ui:composition template="../layout/templateAdmin.xhtml">
-<ui:define name="metadata">
-<f:metadata>
-<f:event listener="#{fatController.updateLista()}" type="preRenderView"/>
-</f:metadata>
-</ui:define>
+<!-- <ui:define name="metadata"> -->
+<!-- <f:metadata> -->
+<!-- <f:event listener="#{fatController.updateLista()}" type="preRenderView"/> -->
+<!-- </f:metadata> -->
+<!-- </ui:define> -->
 
 <ui:define name="content">
 
 <h:form id="form">
+
+<!--     <h:panelGrid columns="4" cellpadding="5"> -->
+<!--         <h:outputLabel for="anno" value="Filtra per anno:" style="font-weight:bold" /> -->
+<!-- 					<p:calendar id="anno" value="#{anno}" navigator="true" yearRange="-5" showOn="button" /> -->
+<!--  <p:commandButton value="Filtra" update="fattura" actionListener="#{fatController.getFattureAnno(anno)}"/> -->
+<!--     </h:panelGrid> -->
+
+    <h:panelGrid columns="4" cellpadding="5">
+       <h:outputText value="Filtra per anno e mese" style="font-weight:bold" />
+       <h:selectOneMenu id="anno" value="#{anno}"
+					styleClass="input-text">
+					<f:selectItems value="#{fatController.anni}"></f:selectItems>
+				</h:selectOneMenu>
+				<h:selectOneMenu id="mese" value="#{mese}"
+					styleClass="input-text">
+					<f:selectItems value="#{fatController.mesi}"></f:selectItems>
+				</h:selectOneMenu>
+<!-- 					<h:inputText id="anno" value="#{anno}" -->
+<!-- 					label="Anno"/> -->
+<!-- 					<h:inputText id="mese" value="#{mese}" -->
+<!-- 					label="Mese"/> -->
+ <p:commandButton value="Filtra" update="fattura" actionListener="#{fatController.getFattureAnnoMese(anno,mese)}"/>
+    </h:panelGrid>
  
     <p:growl id="msgs" showDetail="true"/>
  

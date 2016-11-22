@@ -36,13 +36,6 @@ public class Servizi {
 		return result;
 	}
 
-	public boolean registraCliente(ClienteBean c) {
-		boolean result=false;
-		result=cdao.createCliente(c);
-
-		return result;
-	}
-
 	public boolean registraDipendente(DipendenteBean d) {
 		boolean result=false;
 		result=ddao.createDipendente(d);
@@ -50,17 +43,9 @@ public class Servizi {
 		return result;
 	}
 	//metodi per modificare i dati degli utenti
-	public boolean saveCliente(ClienteBean c){
-		return cdao.aggiornaCliente(c);
-	}
 	
 	public boolean saveDipendente(DipendenteBean d){
 		return ddao.aggiornaDipendente(d);
-	}
-
-	//metodo per avere la lista dei clienti
-	public List<ClienteBean> getClienti(){
-		return cdao.getTuttiClienti();
 	}
 	
 	
@@ -87,11 +72,6 @@ public class Servizi {
 		return u;
 	}
 	
-	public ClienteBean getCliente(String username) {
-		ClienteBean u =cdao.trovaClienteConUsername(username);
-		return u;
-	}
-	
 	public DipendenteBean getDipendente(String username) {
 		DipendenteBean u =ddao.trovaDipendenteConUsername(username);
 		return u;
@@ -111,11 +91,6 @@ public class Servizi {
 	public UtenteBean getUtenteById(long id) {
 		UtenteBean u =udao.trovaUtenteConId(id);
 		return u;
-	}
-	
-	public ClienteBean getClienteById(long id) {
-		ClienteBean c =cdao.trovaClienteConId(id);
-		return c;
 	}
 	
 	public DipendenteBean getDipendenteById(long id) {

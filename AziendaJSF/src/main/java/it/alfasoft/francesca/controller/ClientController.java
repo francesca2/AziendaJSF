@@ -2,6 +2,7 @@ package it.alfasoft.francesca.controller;
 
 import it.alfasoft.francesca.bean.ClienteBean;
 import it.alfasoft.francesca.service.Servizi;
+import it.alfasoft.francesca.service.ServiziClienti;
 
 import java.io.Serializable;
 import java.util.List;
@@ -25,15 +26,15 @@ public class ClientController implements Serializable {
 
 	private List<ClienteBean> listaClienti;
 
-	private Servizi s;
+	private ServiziClienti s;
+	private Servizi ser;
 
 	public ClientController(){
-
-	}
-
-	@PostConstruct
-	public void init(){
-		s=new Servizi();
+		
+		s=new ServiziClienti();
+		ser=new Servizi();
+		this.listaClienti=s.getClienti();
+		
 	}
 
 	public List<ClienteBean> getListaClienti() {
@@ -44,11 +45,11 @@ public class ClientController implements Serializable {
 		this.listaClienti = listaClienti;
 	}
 
-	public Servizi getS() {
+	public ServiziClienti getS() {
 		return s;
 	}
 
-	public void setS(Servizi s) {
+	public void setS(ServiziClienti s) {
 		this.s = s;
 	}
 
@@ -75,7 +76,7 @@ public class ClientController implements Serializable {
     
     public String aggiungiCliente(ClienteBean c){
     	String usnm=c.getUsername();  	
-    	if(!s.trovaUsername(usnm)){
+    	if(!ser.trovaUsername(usnm)){
     		s.registraCliente(c);
     		return "elencoClienti?faces-redirect=true";
     	}

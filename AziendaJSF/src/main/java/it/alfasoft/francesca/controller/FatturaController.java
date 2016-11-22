@@ -1,6 +1,7 @@
 package it.alfasoft.francesca.controller;
 
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.List;
 
 import it.alfasoft.francesca.bean.FatturaBean;
@@ -30,6 +31,36 @@ public class FatturaController implements Serializable {
 	private InvocazioneFatture invocazione;
 	private List<FatturaBean> fatture;
 	private FatturaBean f;
+	
+	 private final static String[] mesi;
+	 
+	 
+	    static {
+	    	mesi = new String[13];
+	    	mesi[0] = " ";
+	    	mesi[1] = "Gennaio";
+	    	mesi[2] = "Febbraio";
+	    	mesi[3] = "Marzo";
+	    	mesi[4] = "Aprile";
+	    	mesi[5] = "Maggio";
+	    	mesi[6] = "Giugno";
+	    	mesi[7] = "Luglio";
+	    	mesi[8] = "Agosto";
+	    	mesi[9] = "Settembre";
+	    	mesi[10] = "Ottobre";
+	    	mesi[11] = "Novembre";
+	    	mesi[12] = "Dicembre";
+	    }
+	    
+		 private final static String[] anni;
+		 
+		    static {
+		    	anni = new String[4];
+		    	anni[0] = "2013";
+		    	anni[1] = "2014";
+		    	anni[2] = "2015";
+		    	anni[3] = "2016";
+		    }
 
 	public FatturaController() {
 	}
@@ -38,6 +69,14 @@ public class FatturaController implements Serializable {
 	public void init(){
 		invocazione= new InvocazioneFatture();
 	}
+	
+    public List<String> getAnni() {
+        return Arrays.asList(anni);
+    }
+    
+    public List<String> getMesi() {
+        return Arrays.asList(mesi);
+    }
 
 	public List<FatturaBean> getFatture() {
 		return fatture;
@@ -85,10 +124,6 @@ public class FatturaController implements Serializable {
 	public FatturaBean getFatturaByCode(String code){
 		Response risposta=invocazione.richiestaFatturaByCode(code).invoke();
 		this.setF(risposta.readEntity(FatturaBean.class));
-//    	if(risposta.getStatus()!=200){
-//    		FacesContext.getCurrentInstance().addMessage(null,
-//                    new FacesMessage("Fattura non trovata!"));
-//    	}
 		return f;
 		
 	}
@@ -100,8 +135,53 @@ public class FatturaController implements Serializable {
 	}
 
 	public List<FatturaBean> getFattureAnnoMese(String anno, String mese){
+		if(mese.equals(" "))
+		{
+			Response risposta=invocazione.richiestaFattureAnno(anno).invoke();
+			this.setFatture(risposta.readEntity(new GenericType<List<FatturaBean>>(){}));
+		}
+		else{
+			switch (mese.toLowerCase()) {
+			case "gennaio":
+				mese = "1";
+                break;
+            case "febbraio":
+            	mese = "2";
+                break;
+            case "marzo":
+            	mese = "3";
+                break;
+            case "aprile":
+            	mese = "4";
+                break;
+            case "maggio":
+            	mese = "5";
+                break;
+            case "giugno":
+            	mese = "6";
+                break;
+            case "luglio":
+            	mese = "7";
+                break;
+            case "agosto":
+            	mese = "8";
+                break;
+            case "settembre":
+            	mese = "9";
+                break;
+            case "ottobre":
+            	mese = "10";
+                break;
+            case "novembre":
+            	mese = "11";
+                break;
+            case "dicembre":
+            	mese = "12";
+                break;
+			}
 		Response risposta=invocazione.richiestaFatturaMese(anno,mese).invoke();
 		this.setFatture(risposta.readEntity(new GenericType<List<FatturaBean>>(){}));
+		}
 		return fatture;
 	}
 }
