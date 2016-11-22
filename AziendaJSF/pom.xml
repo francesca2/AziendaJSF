@@ -40,6 +40,12 @@
     		<artifactId>primefaces</artifactId>
     		<version>6.0</version>
 		</dependency>
+				<!-- https://mvnrepository.com/artifact/org.primefaces.extensions/all-themes -->
+		<dependency>
+			<groupId>org.primefaces.extensions</groupId>
+			<artifactId>all-themes</artifactId>
+			<version>1.0.8</version>
+		</dependency>
 		        <dependency>
             <groupId>org.glassfish.jersey.bundles</groupId>
             <artifactId>jaxrs-ri</artifactId> 
