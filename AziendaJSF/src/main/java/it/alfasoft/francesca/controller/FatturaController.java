@@ -98,4 +98,9 @@ public class FatturaController implements Serializable {
 		return fatture;
 	}
 
+	public List<FatturaBean> getFattureAnnoMese(String anno, String mese){
+		Response risposta=invocazione.richiestaFatturaMese(anno,mese).invoke();
+		this.setFatture(risposta.readEntity(new GenericType<List<FatturaBean>>(){}));
+		return fatture;
+	}
 }
