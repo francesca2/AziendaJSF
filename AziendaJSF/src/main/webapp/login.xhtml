@@ -13,20 +13,21 @@
    
   <h:body>
 
+<p:layout fullPage="true" style="background-color:#FFFFFF;">
 	    <h:form>
               <p:messages id="messages" />
-              <p:panelGrid columns="2">
+              <p:panelGrid columns="2" style="text-align:center">
                     <p:outputLabel for="nameUser" value="Username:"  />
                     <p:inputText id="nameUser" value="#{loginController.username}" />
                     
                     <p:outputLabel for="password" value="Password:" />
                     <p:password id="password" value="#{loginController.password}" />
-                    
+                          
                     <p:commandButton value="Login" action="#{loginController.doLogin()}">
                     </p:commandButton>
-   
-              </p:panelGrid>
+                                  </p:panelGrid>
         </h:form>
+</p:layout>
 
 </h:body>
 </html>

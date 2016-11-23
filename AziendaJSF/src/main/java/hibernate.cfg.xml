@@ -18,7 +18,7 @@ I vari database disponibili sono in core-dialect. Oracle9 è deprecato e posso a
 
 <property name="connection.driver_class">oracle.jdbc.driver.OracleDriver</property> 
  <property name="connection.url">jdbc:oracle:thin:@localhost:1521:xe</property> 
- <property name="connection.username">ProgettoAzienda</property>
+ <property name="connection.username">Azienda</property>
  <property name="connection.password">azienda</property>
 
 <!-- JDBC connection pool (use the built-in) -->
