@@ -31,7 +31,7 @@ public class InvocazioneFatture extends Invocazione {
 	
 	public Invocation richiestaFatturaMese(String anno,String mese){
 
-		return baseTarget.path("/filtri").queryParam("mese", mese)
+		return baseTarget.path("/filtro").queryParam("mese", mese)
 				.queryParam("anno", anno).request().buildGet();
 	}
 

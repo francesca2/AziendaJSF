@@ -11,7 +11,7 @@ import javax.ws.rs.client.WebTarget;
 public abstract class Invocazione {
 
 	protected Client cliente= ClientBuilder.newClient();
-	protected WebTarget baseTarget= cliente.target("http://localhost:5085/AziendaIBM1/alfasoft/fatture");
+	protected WebTarget baseTarget= cliente.target("http://localhost:5080/AziendaIBM1/alfasoft/fatture");
 	
 	abstract Invocation richiestaFatturaByCode(String code);
 	
