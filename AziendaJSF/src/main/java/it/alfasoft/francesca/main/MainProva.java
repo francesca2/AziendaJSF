@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -41,7 +42,7 @@ public class MainProva {
 		
 		String nomeFile="ElencoBuste.pdf";
 		
-		 String percorso  = "K:\\Users\\Francesca\\";
+		 String percorso  = "C:\\Users\\corso\\Documents\\";
 		 
 		 String fileFinale=percorso+nomeFile;
 		 
@@ -50,8 +51,7 @@ public class MainProva {
 
            //la mia lista che mantiene i dati
              List<BustaPagaWS> buste = bpdao.getBustePaga();
-     
-
+			
            // Converto la  lista to JRBeanCollectionDataSource 
            JRBeanCollectionDataSource itemsJRBean = new JRBeanCollectionDataSource(buste,false);
 
@@ -61,7 +61,7 @@ public class MainProva {
            parameters.put("DatasetBuste", itemsJRBean);
 
            //  file compilato di jasper (.jasper) di Jasper Report per creare  PDF 
-           JasperPrint jasperPrint = JasperFillManager.fillReport("bustePaga.jasper", parameters, new JREmptyDataSource());
+           JasperPrint jasperPrint = JasperFillManager.fillReport("C:\\Users\\corso\\Desktop\\git\\AziendaJSF\\AziendaJSF\\src\\main\\webapp\\bustepaga\\jasper\\bustaPaga.jasper", parameters, new JREmptyDataSource());
 
            //outputStream per creare PDF 
            OutputStream outputStream = new FileOutputStream(new File(fileFinale));
