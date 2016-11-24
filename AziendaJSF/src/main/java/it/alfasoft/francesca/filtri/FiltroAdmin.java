@@ -18,7 +18,7 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet Filter implementation class FiltroAdmin
  */
-@WebFilter(filterName="FiltroAdmin",urlPatterns="/faces/portali/admin/*")
+@WebFilter(filterName="FiltroAdmin",urlPatterns="/faces/portali/amministratore/*")
 public class FiltroAdmin implements Filter {
 
     /**

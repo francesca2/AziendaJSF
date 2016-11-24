@@ -1,8 +1,8 @@
 package it.alfasoft.francesca.dao;
 
 
-import it.alfasoft.francesca.model.Rubrica;
-import it.alfasoft.francesca.model.Voce;
+import it.alfasoft.francesca.bean.Rubrica;
+import it.alfasoft.francesca.bean.Voce;
 import it.alfasoft.francesca.utility.HibernateUtil;
 
 import java.beans.PropertyVetoException;

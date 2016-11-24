@@ -1,15 +1,23 @@
-package it.alfasoft.francesca.model;
+package it.alfasoft.francesca.bean;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.faces.bean.ManagedBean;
 import javax.persistence.*;
 
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
 
 @Entity
-public class Rubrica {
+@ManagedBean(name="rubrica", eager=true)
+public class Rubrica implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -49,6 +57,10 @@ public class Rubrica {
 
 	public void setListaVoci(Set<Voce> listaVoci) {
 		this.listaVoci = listaVoci;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 	public void addVoce(Voce v){

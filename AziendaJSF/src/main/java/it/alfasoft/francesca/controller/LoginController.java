@@ -74,10 +74,10 @@ public class LoginController {
 		setRuolo(u.getRuolo());
 		switch(ruolo) {
 		case 'a' :
-			page= "/portali/admin/homeAdmin?faces-redirect=true";
+			page= "/portali/amministratore/homeAdmin?faces-redirect=true";
 		break;
 		case 'c' :
-			page= "/portali/client/homeClient?faces-redirect=true";
+			page= "/portali/cliente/homeClient?faces-redirect=true";
 		break;
 		
 		case 'd' :

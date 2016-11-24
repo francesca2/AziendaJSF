@@ -6,7 +6,9 @@ import it.alfasoft.francesca.bean.AdminBean;
 import it.alfasoft.francesca.bean.BustaPaga;
 import it.alfasoft.francesca.bean.ClienteBean;
 import it.alfasoft.francesca.bean.DipendenteBean;
+import it.alfasoft.francesca.bean.Rubrica;
 import it.alfasoft.francesca.bean.UtenteBean;
+import it.alfasoft.francesca.bean.Voce;
 import it.alfasoft.francesca.dao.AdminDao;
 import it.alfasoft.francesca.dao.BustaPagaDao;
 import it.alfasoft.francesca.dao.ClienteDao;
@@ -14,8 +16,6 @@ import it.alfasoft.francesca.dao.DipendenteDao;
 import it.alfasoft.francesca.dao.RubricaDao;
 import it.alfasoft.francesca.dao.UtenteDao;
 import it.alfasoft.francesca.dao.VoceDao;
-import it.alfasoft.francesca.model.Rubrica;
-import it.alfasoft.francesca.model.Voce;
 import it.alfasoft.francesca.utility.PasswordCodification;
 
 public class Servizi {
@@ -35,9 +35,18 @@ public class Servizi {
 
 		return result;
 	}
+	
+	public boolean registraAdmin(AdminBean a) {
+		boolean result=false;
+		a.setPassword(convertiPass(a.getPassword()));
+		result=adao.createAdmin(a);
+
+		return result;
+	}
 
 	public boolean registraDipendente(DipendenteBean d) {
 		boolean result=false;
+		d.setPassword(convertiPass(d.getPassword()));
 		result=ddao.createDipendente(d);
 
 		return result;

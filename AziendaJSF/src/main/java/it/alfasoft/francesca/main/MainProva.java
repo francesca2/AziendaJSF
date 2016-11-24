@@ -15,10 +15,13 @@ import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import it.alfasoft.francesca.bean.AdminBean;
 import it.alfasoft.francesca.bean.BustaPaga;
 import it.alfasoft.francesca.bean.BustaPagaWS;
+import it.alfasoft.francesca.bean.DipendenteBean;
 import it.alfasoft.francesca.dao.BustaPagaDao;
 import it.alfasoft.francesca.dao.BustaPagaWSDao;
+import it.alfasoft.francesca.service.Servizi;
 import it.alfasoft.francesca.service.ServiziBusta;
 
 public class MainProva {
@@ -35,52 +38,60 @@ public class MainProva {
 //		sb.addBustaPaga(b2);
 //		sb.addBustaPaga(b3);
 		
-		BustaPagaWSDao bpdao= new BustaPagaWSDao();
+//		BustaPagaWSDao bpdao= new BustaPagaWSDao();
+//		
+//		Double d;
+//		
+//		String nomeFile="ElencoBuste.pdf";
+//		
+//		 String percorso  = "K:\\Users\\Francesca\\";
+//		 
+//		 String fileFinale=percorso+nomeFile;
+//		 
+//		try {
+//             
+//
+//           //la mia lista che mantiene i dati
+//             List<BustaPagaWS> buste = bpdao.getBustePaga();
+//     
+//
+//           // Converto la  lista to JRBeanCollectionDataSource 
+//           JRBeanCollectionDataSource itemsJRBean = new JRBeanCollectionDataSource(buste,false);
+//
+//           //  una mappa per mandare i parametri a Jasper 
+//           Map<String, Object> parameters = new HashMap<String, Object>();
+//         
+//           parameters.put("DatasetBuste", itemsJRBean);
+//
+//           //  file compilato di jasper (.jasper) di Jasper Report per creare  PDF 
+//           JasperPrint jasperPrint = JasperFillManager.fillReport("K:\\Users\\Francesca\\git\\AziendaJSF\\AziendaJSF\\src\\main\\webapp\\bustepaga\\jasper\\bustePaga.jasper", parameters, new JREmptyDataSource());
+//
+//           //outputStream per creare PDF 
+//           OutputStream outputStream = new FileOutputStream(new File(fileFinale));
+//          
+//           
+//           // scrivo in un  file PDF  
+//         
+//           JasperExportManager.exportReportToPdfStream(jasperPrint, outputStream);
+//
+//           System.out.println("File e' stato creato");
+//           
+//           
+//       } catch (JRException ex) {
+//           ex.printStackTrace();
+//       } catch (FileNotFoundException ex) {
+//           ex.printStackTrace();
+//       }
 		
-		Double d;
+		Servizi s=new Servizi();
 		
-		String nomeFile="ElencoBuste.pdf";
+		AdminBean a=new AdminBean("Francesca","Giordani","admin","root",'a',"primo");
+		s.registraAdmin(a);
 		
-		 String percorso  = "K:\\Users\\Francesca\\";
-		 
-		 String fileFinale=percorso+nomeFile;
-		 
-		try {
-             
-
-           //la mia lista che mantiene i dati
-             List<BustaPagaWS> buste = bpdao.getBustePaga();
-     
-
-           // Converto la  lista to JRBeanCollectionDataSource 
-           JRBeanCollectionDataSource itemsJRBean = new JRBeanCollectionDataSource(buste,false);
-
-           //  una mappa per mandare i parametri a Jasper 
-           Map<String, Object> parameters = new HashMap<String, Object>();
-         
-           parameters.put("DatasetBuste", itemsJRBean);
-
-           //  file compilato di jasper (.jasper) di Jasper Report per creare  PDF 
-           JasperPrint jasperPrint = JasperFillManager.fillReport("K:\\Users\\Francesca\\git\\AziendaJSF\\AziendaJSF\\src\\main\\webapp\\bustepaga\\jasper\\bustePaga.jasper", parameters, new JREmptyDataSource());
-
-           //outputStream per creare PDF 
-           OutputStream outputStream = new FileOutputStream(new File(fileFinale));
-          
-           
-           // scrivo in un  file PDF  
-         
-           JasperExportManager.exportReportToPdfStream(jasperPrint, outputStream);
-
-           System.out.println("File e' stato creato");
-           
-           
-       } catch (JRException ex) {
-           ex.printStackTrace();
-       } catch (FileNotFoundException ex) {
-           ex.printStackTrace();
-       }
-		
-		
+//		for(DipendenteBean d :s.getDipendenti()){
+//			System.out.println(d.getNome());
+//		}
+//		System.out.println(s.getDipendente("cccc"));
 
 }
 

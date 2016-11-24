@@ -19,7 +19,7 @@
 <h:form id="form">
    <p:growl id="msgs" showDetail="true"/>
  
-   <p:dataTable id="dipendente" var="dipendente" value="#{dpController.listaDipendenti}" editable="true" style="margin-bottom:20px">
+   <p:dataTable id="impiegato" var="impiegato" value="#{dpController.listaDipendenti}" editable="true" style="margin-bottom:20px">
        <f:facet name="header">
            Dipendenti
        </f:facet>
@@ -29,23 +29,23 @@
  
        <p:column headerText="Nome">
            <p:cellEditor>
-               <f:facet name="output"><h:outputText value="#{dipendente.nome}" /></f:facet>
-               <f:facet name="input"><p:inputText id="modelInput" value="#{dipendente.nome}" style="width:100%"/></f:facet>
+               <f:facet name="output"><h:outputText value="#{impiegato.nome}" /></f:facet>
+               <f:facet name="input"><p:inputText value="#{impiegato.nome}" style="width:100%"/></f:facet>
            </p:cellEditor>
        </p:column>
  
        <p:column headerText="Cognome">
            <p:cellEditor>
-               <f:facet name="output"><h:outputText value="#{dipendente.cognome}" /></f:facet>
-               <f:facet name="input"><p:inputText value="#{dipendente.cognome}" style="width:100%" /></f:facet>
+               <f:facet name="output"><h:outputText value="#{impiegato.cognome}" /></f:facet>
+               <f:facet name="input"><p:inputText value="#{impiegato.cognome}" style="width:100%" /></f:facet>
            </p:cellEditor>
        </p:column>
  
        <p:column headerText="Posizione">
            <p:cellEditor>
-  				 <f:facet name="output"><h:outputText value="#{dipendente.posizione}" /></f:facet>
+  				 <f:facet name="output"><h:outputText value="#{impiegato.posizione}" /></f:facet>
                <f:facet name="input">
-                   <h:selectOneMenu value="#{dipendente.posizione}" style="width:100%">
+                   <h:selectOneMenu value="#{impiegato.posizione}" style="width:100%">
                        <f:selectItems value="#{dpController.posizioni}" var="man" itemLabel="#{man}" itemValue="#{man}" />
                    </h:selectOneMenu>
                </f:facet>
@@ -54,8 +54,8 @@
  
        <p:column headerText="Stipendio">
            <p:cellEditor>
-               <f:facet name="output"><h:outputText value="#{dipendente.stipendio}" /></f:facet>
-               <f:facet name="input"><p:inputText value="#{dipendente.stipendio}" style="width:100%" /></f:facet>
+               <f:facet name="output"><h:outputText value="#{impiegato.stipendio}" /></f:facet>
+               <f:facet name="input"><p:inputText value="#{impiegato.stipendio}" style="width:100%" /></f:facet>
            </p:cellEditor>
        </p:column>
  

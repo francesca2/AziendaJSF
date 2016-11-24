@@ -1,12 +1,21 @@
-package it.alfasoft.francesca.model;
+package it.alfasoft.francesca.bean;
+
+import java.io.Serializable;
 
 import it.alfasoft.francesca.utility.IsValid;
 
+import javax.faces.bean.ManagedBean;
 import javax.persistence.*;
 
 @Entity
-public class Voce implements IsValid {
+@ManagedBean(name="voce", eager=true)
+public class Voce implements IsValid,Serializable {
 
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -65,6 +74,10 @@ public class Voce implements IsValid {
 
 	public void setRubrica(Rubrica rubrica) {
 		this.rubrica = rubrica;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 	public boolean isValid() {

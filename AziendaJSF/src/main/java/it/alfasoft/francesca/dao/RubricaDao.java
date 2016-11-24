@@ -1,6 +1,6 @@
 package it.alfasoft.francesca.dao;
 
-import it.alfasoft.francesca.model.Rubrica;
+import it.alfasoft.francesca.bean.Rubrica;
 import it.alfasoft.francesca.utility.HibernateUtil;
 
 import org.hibernate.Query;

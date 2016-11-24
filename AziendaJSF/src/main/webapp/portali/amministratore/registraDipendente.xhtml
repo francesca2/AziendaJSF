@@ -23,14 +23,14 @@
 			<p:messages id="msgs" />
 			<h:form>
 Nome:<br />
-				<h:inputText id="nome" value="#{employee.nome}" label="Nome"
+				<h:inputText id="nome" value="#{impiegato.nome}" label="Nome"
 					required="true" requiredMessage="Questo campo è obbligatorio">
 					<f:validateLength minimum="2" />
 				</h:inputText>
 				<h:message for="nome" styleClass="colori" />
 				<br />
 Cognome:<br />
-				<h:inputText id="cognome" value="#{employee.cognome}"
+				<h:inputText id="cognome" value="#{impiegato.cognome}"
 					label="Cognome" required="true"
 					requiredMessage="Questo campo è obbligatorio">
 					<f:validateLength minimum="2" />
@@ -38,7 +38,7 @@ Cognome:<br />
 				<h:message for="cognome" styleClass="colori" />
 				<br />
  Username:<br />
-				<h:inputText id="username" value="#{employee.username}"
+				<h:inputText id="username" value="#{impiegato.username}"
 					label="Username" required="true"
 					requiredMessage="Questo campo è obbligatorio"
 					validatorMessage="Lo username deve essere almeno 4 caratteri!">
@@ -47,16 +47,16 @@ Cognome:<br />
 				<h:message for="username" styleClass="colori" />
 				<br />
 Password:<br />
-				<h:inputSecret id="password" value="#{employee.password}" />
+				<h:inputSecret id="password" value="#{impiegato.password}" />
 				<br />
 Posizione:<br />
-				<h:selectOneMenu value="#{employee.posizione}"
+				<h:selectOneMenu value="#{impiegato.posizione}"
 					styleClass="input-text">
 					<f:selectItems value="#{dpController.posizioni}"></f:selectItems>
 				</h:selectOneMenu>
 				<br />
 Stipendio:<br />
-				<h:inputText id="stipendioD" value="#{employee.stipendio}"
+				<h:inputText id="stipendioD" value="#{impiegato.stipendio}"
 					label="StipendioD" required="true"
 					requiredMessage="Questo campo è obbligatorio"
 					validatorMessage="Lo stipendio deve essere compreso tra 100 e 9999.9">
@@ -65,7 +65,7 @@ Stipendio:<br />
 				<h:message for="stipendioD" styleClass="colori" />
 				<br />
 				<h:commandButton value="Registra"
-					action="#{dpController.aggiungiDipendente(employee)}" />
+					action="#{dpController.aggiungiDipendente(impiegato)}" />
 			</h:form>
 		</p:panel>
 	</ui:define>

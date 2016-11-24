@@ -18,7 +18,7 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet Filter implementation class FiltroClient
  */
-@WebFilter("/faces/portali/client/*")
+@WebFilter("/faces/portali/cliente/*")
 public class FiltroClient implements Filter {
 
     /**

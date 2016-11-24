@@ -6,7 +6,7 @@ import javax.faces.bean.ManagedBean;
 import javax.persistence.*;
 
 @Entity
-@ManagedBean(name="cliente", eager=true)
+@ManagedBean(name="client", eager=true)
 public class ClienteBean extends UtenteBean implements IsValid  {
 
 	/**

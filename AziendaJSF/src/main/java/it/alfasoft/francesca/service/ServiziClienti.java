@@ -3,13 +3,14 @@ package it.alfasoft.francesca.service;
 import java.util.List;
 
 import it.alfasoft.francesca.bean.ClienteBean;
+import it.alfasoft.francesca.bean.Rubrica;
 import it.alfasoft.francesca.bean.UtenteBean;
 import it.alfasoft.francesca.dao.ClienteDao;
 import it.alfasoft.francesca.dao.DipendenteDao;
 import it.alfasoft.francesca.dao.RubricaDao;
 import it.alfasoft.francesca.dao.UtenteDao;
 import it.alfasoft.francesca.dao.VoceDao;
-import it.alfasoft.francesca.model.Rubrica;
+import it.alfasoft.francesca.utility.PasswordCodification;
 
 public class ServiziClienti {
 	
@@ -19,9 +20,16 @@ public class ServiziClienti {
 	
 	public boolean registraCliente(ClienteBean c) {
 		boolean result=false;
+		c.setPassword(convertiPass(c.getPassword()));
 		result=cdao.createCliente(c);
 
 		return result;
+	}
+	
+	//metodo per codificare la password
+	public String convertiPass(String pass){
+
+		return PasswordCodification.codificatePass(pass);	
 	}
 	
 	//metodi per modificare i dati di un cliente

@@ -3,7 +3,6 @@ package it.alfasoft.francesca.dao;
 import java.util.ArrayList;
 import java.util.List;
 
-import it.alfasoft.francesca.bean.ClienteBean;
 import it.alfasoft.francesca.bean.DipendenteBean;
 import it.alfasoft.francesca.utility.HibernateUtil;
 

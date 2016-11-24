@@ -2,10 +2,10 @@ package it.alfasoft.francesca.service;
 
 import java.util.List;
 
+import it.alfasoft.francesca.bean.Rubrica;
+import it.alfasoft.francesca.bean.Voce;
 import it.alfasoft.francesca.dao.RubricaDao;
 import it.alfasoft.francesca.dao.VoceDao;
-import it.alfasoft.francesca.model.Rubrica;
-import it.alfasoft.francesca.model.Voce;
 
 public class ServiziRubrica {
 	RubricaDao rdao= new RubricaDao();

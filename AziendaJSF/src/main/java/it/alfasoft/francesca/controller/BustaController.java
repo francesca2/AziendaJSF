@@ -27,7 +27,7 @@ public class BustaController implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private List<BustaPaga> listaBuste;
-	private Map<String,Long> mappaDipendenti= new HashMap<String,Long>();
+	private Map<String,Long> mappaDipendenti;
 	private long idDip;
 	
 	private ServiziBusta sb;
@@ -37,6 +37,7 @@ public class BustaController implements Serializable {
 		sb=new ServiziBusta();
 		s=new Servizi();
 		listaBuste=sb.getBustePaga();
+		mappaDipendenti= new HashMap<String,Long>();
 	}
 
 	public List<BustaPaga> getListaBuste() {

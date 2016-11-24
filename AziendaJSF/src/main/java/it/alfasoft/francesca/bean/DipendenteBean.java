@@ -11,9 +11,8 @@ import javax.persistence.*;
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
 
-
 @Entity
-@ManagedBean(name="employee", eager=true)
+@ManagedBean(name="impiegato", eager=true)
 public class DipendenteBean extends UtenteBean implements IsValid {
 
 	/**
