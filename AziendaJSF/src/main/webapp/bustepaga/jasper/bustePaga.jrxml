@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
-<!-- 2016-11-22T17:18:45 -->
+<!-- 2016-11-24T09:33:24 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="fatture" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d4a1d5eb-82dd-412f-a620-202e4bdf9dba">
 	<property name="template.engine" value="tabular_template"/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
@@ -40,20 +40,18 @@
 			<rightPen lineWidth="0.5" lineColor="#000000"/>
 		</box>
 	</style>
-	<subDataset name="DatasetBuste" uuid="f32fa7aa-41b4-4757-8120-69599f76f6fb">
+	<subDataset name="DatasetBusta" uuid="3a16a38e-52f4-4e0c-bfd0-3cf9c7a68684">
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
 		<queryString>
 			<![CDATA[]]>
 		</queryString>
-		<field name="codiceBusta" class="java.lang.String">
-			<fieldDescription><![CDATA[${codiceBusta}]]></fieldDescription>
-		</field>
-		<field name="data" class="java.lang.String">
-			<fieldDescription><![CDATA[${data}]]></fieldDescription>
-		</field>
-		<field name="importo" class="java.lang.String">
-			<fieldDescription><![CDATA[${importo}]]></fieldDescription>
-		</field>
+		<field name="codiceBusta" class="java.lang.String"/>
+		<field name="data" class="java.lang.String"/>
+		<field name="importo" class="java.lang.String"/>
 	</subDataset>
+	<parameter name="codiceBusta" class="java.lang.String"/>
+	<parameter name="data" class="java.util.Date"/>
+	<parameter name="importo" class="java.lang.Long"/>
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
@@ -105,76 +103,59 @@
 		</band>
 	</pageHeader>
 	<detail>
-		<band height="274" splitType="Stretch">
+		<band height="354" splitType="Stretch">
 			<componentElement>
-				<reportElement x="127" y="40" width="300" height="56" uuid="0ae296e6-c70d-4c12-989e-54a5a472363b">
+				<reportElement x="140" y="60" width="200" height="200" uuid="c20daf39-b7f0-4662-b1b6-2124b6b26abb">
 					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
 					<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
 					<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
 					<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
-					<property name="net.sf.jasperreports.export.headertoolbar.table.name" value=""/>
-					<property name="com.jaspersoft.studio.components.autoresize.next" value="true"/>
 				</reportElement>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<datasetRun subDataset="DatasetBuste" uuid="b14cc95a-6f84-43c4-acb6-9a1bebe6f641">
-						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					<datasetRun subDataset="DatasetBusta" uuid="a8bb1aa0-b407-4e2d-aebf-56a38144ddf6">
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource()]]></dataSourceExpression>
 					</datasetRun>
-					<jr:column width="100" uuid="d49a1ca3-a7cd-4358-b110-ad5aab1d7a58">
+					<jr:column width="66" uuid="ff126ef9-189e-4404-8619-f7ccf97f4e68">
 						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Colonna1"/>
-						<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
-						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
-							<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<jr:columnHeader style="Table_CH" height="30">
 							<staticText>
-								<reportElement positionType="Float" x="0" y="0" width="100" height="30" uuid="24c7fa0f-deee-4d96-b649-bb8a06e1a9cf"/>
-								<textElement textAlignment="Center">
-									<font fontName="DejaVu Sans" size="12" isBold="true"/>
-								</textElement>
-								<text><![CDATA[Codice Busta Paga]]></text>
+								<reportElement x="0" y="0" width="66" height="30" uuid="f0bf79b4-118a-4f7e-a166-57971390a82e"/>
+								<text><![CDATA[codiceBusta]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="Table_TD" height="30">
 							<textField>
-								<reportElement x="0" y="0" width="100" height="30" uuid="460636c6-510c-4547-9eeb-bf3d755275b4"/>
+								<reportElement x="0" y="0" width="66" height="30" uuid="cc3318c1-9ca9-4963-8ff9-1d11d622e612"/>
 								<textFieldExpression><![CDATA[$F{codiceBusta}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="100" uuid="b7c7f03c-f746-498b-bdc7-c47f2182ec45">
+					<jr:column width="66" uuid="2f9fb91e-c8d9-4514-9b73-9b3d7a28410a">
 						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Colonna2"/>
-						<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
-						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
-							<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<jr:columnHeader style="Table_CH" height="30">
 							<staticText>
-								<reportElement x="0" y="0" width="100" height="30" uuid="9537c0ee-ac66-4a4d-a53a-0f68305ea43e"/>
-								<textElement>
-									<font size="12" isBold="true"/>
-								</textElement>
-								<text><![CDATA[Data Emissione]]></text>
+								<reportElement x="0" y="0" width="66" height="30" uuid="9aef863a-4768-4efc-b768-4e44f1ecb95b"/>
+								<text><![CDATA[data]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="Table_TD" height="30">
 							<textField>
-								<reportElement x="0" y="0" width="100" height="30" uuid="31787de7-da14-4d93-97f5-079a6618afaa"/>
+								<reportElement x="0" y="0" width="66" height="30" uuid="e293c2c9-b78f-4301-bd5b-66da25efa918"/>
 								<textFieldExpression><![CDATA[$F{data}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="100" uuid="4c2c6a37-2573-432f-ac66-198074239516">
+					<jr:column width="66" uuid="45785463-ec1d-4db0-998d-72ada5750203">
 						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Colonna3"/>
-						<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
-						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
-							<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<jr:columnHeader style="Table_CH" height="30">
 							<staticText>
-								<reportElement x="0" y="0" width="100" height="30" uuid="d8405146-c89e-4f72-bdea-c3d886897a3e"/>
-								<textElement>
-									<font fontName="DejaVu Sans Mono" size="12" isBold="true"/>
-								</textElement>
-								<text><![CDATA[Importo]]></text>
+								<reportElement x="0" y="0" width="66" height="30" uuid="122966dd-165e-4a6e-b52a-f06bd8eeb63b"/>
+								<text><![CDATA[importo]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="Table_TD" height="30">
 							<textField>
-								<reportElement x="0" y="0" width="100" height="30" uuid="32c734ab-6ec3-4a2a-a91c-e866a3111833"/>
+								<reportElement x="0" y="0" width="66" height="30" uuid="205ad023-ae83-412b-8d8a-46612e91322f"/>
 								<textFieldExpression><![CDATA[$F{importo}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
