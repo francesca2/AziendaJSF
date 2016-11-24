@@ -4,17 +4,52 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 
-<ui:composition template="">
-	<ui:define name="header">
-	    Add your header here or delete to use the default
-	</ui:define>
-	<ui:define name="content">
-	    Add your content here or delete to use the default
-	</ui:define>
-	<ui:define name="footer">
-	    Add your footer here or delete to use the default
-	</ui:define>
+<ui:composition template="../../layout/templateClient.xhtml">
+
+<ui:define name="content">
+
+<h:form id="form">
+   <p:growl id="msgs" showDetail="true"/>
+ 
+   <p:dataTable id="voce" var="voce" value="#{rubricaController.findRubrica(loginController.id)}" editable="true" style="margin-bottom:20px">
+       <f:facet name="header">
+           Clienti
+       </f:facet>
+ 
+       <p:ajax event="rowEdit" listener="#{rubricaController.onRowEdit}" update=":form:msgs" />
+       <p:ajax event="rowEditCancel" listener="#{rubricaController.onRowCancel}" update=":form:msgs" />
+ 
+       <p:column headerText="Nome">
+           <p:cellEditor>
+               <f:facet name="output"><h:outputText value="#{voce.nomeVoce}" /></f:facet>
+               <f:facet name="input"><p:inputText id="modelInput" value="#{voce.nomeVoce}" style="width:100%"/></f:facet>
+           </p:cellEditor>
+       </p:column>
+ 
+       <p:column headerText="Cognome">
+           <p:cellEditor>
+               <f:facet name="output"><h:outputText value="#{voce.cognomeVoce}" /></f:facet>
+               <f:facet name="input"><p:inputText value="#{voce.cognomeVoce}" style="width:100%"/></f:facet>
+           </p:cellEditor>
+       </p:column>
+ 
+       <p:column headerText="Telefono">
+           <p:cellEditor>
+  				 <f:facet name="output"><h:outputText value="#{voce.telefono}" /></f:facet>
+               <f:facet name="input"><p:inputText value="#{voce.telefono}" style="width:100%"/></f:facet>
+           </p:cellEditor>
+       </p:column>
+ 
+       <p:column style="width:32px">
+           <p:rowEditor />
+           </p:column>
+   </p:dataTable>
+   </h:form>
+</ui:define>
+
 </ui:composition>
+
 </html>

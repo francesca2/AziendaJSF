@@ -5,11 +5,13 @@ import java.util.List;
 import it.alfasoft.francesca.bean.Rubrica;
 import it.alfasoft.francesca.bean.Voce;
 import it.alfasoft.francesca.dao.RubricaDao;
+import it.alfasoft.francesca.dao.UtenteDao;
 import it.alfasoft.francesca.dao.VoceDao;
 
 public class ServiziRubrica {
 	RubricaDao rdao= new RubricaDao();
 	VoceDao vdao= new VoceDao();
+	UtenteDao udao=new UtenteDao();
 	
 	//metodo per creare una rubrica
 	public boolean registraRubrica(String username)
@@ -44,6 +46,15 @@ public class ServiziRubrica {
 		return r;
 	}
 	
+	//Metodo per trovare la rubrica di un utente a seconda del suo id
+	public Rubrica trovaRubrica(long id) {
+
+		String username=udao.trovaUtenteConId(id).getUsername();
+		Rubrica r= rdao.trovaRubricaConNome(username);
+
+		return r;
+	}
+	
 	//metodo per trovare una voce
 	public Voce getVoceById(long id){
 		return vdao.trovaVoceConId(id);
@@ -55,7 +66,6 @@ public class ServiziRubrica {
 
 		return lista;
 	}
-
 
 	//metodo per eliminare una voce
 	public boolean eliminaVoce(Rubrica r, long id)
