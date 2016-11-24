@@ -16,15 +16,15 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Servlet Filter implementation class Autenticazione
+ * Servlet Filter implementation class FiltroAdmin
  */
-@WebFilter(filterName="Autenticazione",urlPatterns="/faces/portali/*")
-public class Autenticazione implements Filter {
+@WebFilter(filterName="FiltroAdmin",urlPatterns="/faces/portali/admin/*")
+public class FiltroAdmin implements Filter {
 
-	   /**
+    /**
      * Default constructor. 
      */
-    public Autenticazione() {
+    public FiltroAdmin() {
         // TODO Auto-generated constructor stub
     }
 
@@ -41,7 +41,7 @@ public class Autenticazione implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		// TODO Auto-generated method stub
 		// place your code here
-		
+
 		HttpServletRequest httpReq = (HttpServletRequest) request;
 		HttpServletResponse httpRes = (HttpServletResponse) response;
 		HttpSession session= httpReq.getSession();
@@ -50,7 +50,7 @@ public class Autenticazione implements Filter {
 		
 		//controlliamo se il logController non è stato creato quindi è la prima volta che cerco di entrare nella pagina
 		//oppure l'attributo loggato è settato a false, facciamo un redirect alla pagina di login
-		if(logController == null || !logController.isLoggato()){
+		if(logController.getRuolo()!='a'){
 			httpRes.sendRedirect(httpReq.getContextPath()+"/faces/login.xhtml");
 		}
 
@@ -63,6 +63,6 @@ public class Autenticazione implements Filter {
 	 */
 	public void init(FilterConfig fConfig) throws ServletException {
 		// TODO Auto-generated method stub
-}
+	}
 
 }

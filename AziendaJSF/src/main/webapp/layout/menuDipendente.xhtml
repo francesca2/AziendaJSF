@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:form>
+    <p:growl autoUpdate="true"/>
+ 
+    <p:panelMenu style="width:200px">
+            <p:submenu label="Home Page">
+            <p:menuitem value="Home" outcome="/portali/dipendente/homeDipendente" icon="ui-icon-home" />
+        </p:submenu>
+        		<p:submenu label="Buste Paga">
+			<p:menuitem value="Elenco Buste Paga"
+				outcome="/portali/dipendente/elencoBuste"
+				icon="ui-icon-folder-collapsed" />
+			<p:menuitem value="Trova Busta Paga"
+				outcome="/portali/dipendente/trovaBusta" icon="ui-icon-search" />				
+		</p:submenu>
+		<p:submenu label="Contatti">
+			<p:menuitem value="Elenco Contatti"
+				outcome="/portali/dipendente/elencoContatti" icon="ui-icon-person" />
+			<p:menuitem value="Aggiungi Contatto"
+				outcome="/portali/dipendente/registraVoce" icon="ui-icon-plus" />
+			<p:menuitem value="Trova Contatto"
+				outcome="/portali/dipendente/trovaVoce" icon="ui-icon-search" />
+		</p:submenu>
+    </p:panelMenu>
+</h:form>
+    
+</html>

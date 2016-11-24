@@ -8,13 +8,29 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <h:form>
-    <p:growl autoUpdate="true"/>
- 
-    <p:panelMenu style="width:200px">
-            <p:submenu label="Home Page">
-            <p:menuitem value="Home" outcome="/portali/client/homeClient" icon="ui-icon-home" />
-        </p:submenu>
-    </p:panelMenu>
+	<p:growl autoUpdate="true" />
+
+	<p:panelMenu style="width:200px">
+		<p:submenu label="Home Page">
+			<p:menuitem value="Home" outcome="/portali/client/homeClient"
+				icon="ui-icon-home" />
+		</p:submenu>
+		<p:submenu label="Fatture">
+			<p:menuitem value="Elenco Fatture"
+				outcome="/portali/client/elencoFatture"
+				icon="ui-icon-folder-collapsed" />
+			<p:menuitem value="Trova Fattura"
+				outcome="/portali/client/trovaFattura" icon="ui-icon-search" />
+		</p:submenu>
+		<p:submenu label="Contatti">
+			<p:menuitem value="Elenco Contatti"
+				outcome="/portali/client/elencoContatti" icon="ui-icon-person" />
+			<p:menuitem value="Aggiungi Contatto"
+				outcome="/portali/client/registraVoce" icon="ui-icon-plus" />
+			<p:menuitem value="Trova Contatto"
+				outcome="/portali/client/trovaVoce" icon="ui-icon-search" />
+		</p:submenu>
+	</p:panelMenu>
 </h:form>
-    
+
 </html>

@@ -8,10 +8,60 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <ui:composition template="../../layout/templateAdmin.xhtml">
-	
-	<ui:define name="content">
-	    Add your content here or delete to use the default
-	</ui:define>
+<!-- <ui:define name="metadata"> -->
+<!-- <f:metadata> -->
+<!-- <f:event listener="#{dpController.updateLista()}" type="preRenderView"/> -->
+<!-- </f:metadata> -->
+<!-- </ui:define> -->
+
+<ui:define name="content">
+
+<h:form id="form">
+   <p:growl id="msgs" showDetail="true"/>
+ 
+   <p:dataTable id="busta" var="busta" value="#{bustaController.listaBuste}" editable="true" style="margin-bottom:20px">
+       <f:facet name="header">
+           Dipendenti
+       </f:facet>
+ 
+<!--        <p:ajax event="rowEdit" listener="#{dpController.onRowEdit}" update=":form:msgs" /> -->
+<!--        <p:ajax event="rowEditCancel" listener="#{dpController.onRowCancel}" update=":form:msgs" /> -->
+ 
+       <p:column headerText="Nome">
+           <p:cellEditor>
+               <f:facet name="output"><h:outputText value="#{busta.dipendente.nome}" /></f:facet>
+<!--                <f:facet name="input"><p:inputText id="modelInput" value="#{busta.dipendente.nome}" style="width:100%"/></f:facet> -->
+           </p:cellEditor>
+       </p:column>
+ 
+        <p:column headerText="Cognome">
+           <p:cellEditor>
+               <f:facet name="output"><h:outputText value="#{busta.dipendente.cognome}" /></f:facet>
+<!--                <f:facet name="input"><p:inputText id="modelInput" value="#{busta.dipendente.nome}" style="width:100%"/></f:facet> -->
+           </p:cellEditor>
+       </p:column>
+ 
+       <p:column headerText="Data">
+           <p:cellEditor>
+               <f:facet name="output"><h:outputText value="#{busta.data}" /></f:facet>
+               <f:facet name="input"><p:inputText value="#{busta.data}" style="width:100%" /></f:facet>
+           </p:cellEditor>
+       </p:column>
+ 
+       <p:column headerText="Import">
+           <p:cellEditor>
+               <f:facet name="output"><h:outputText value="#{busta.importo}" /></f:facet>
+               <f:facet name="input"><p:inputText value="#{busta.importo}" style="width:100%" /></f:facet>
+           </p:cellEditor>
+       </p:column>
+ 
+       <p:column style="width:32px">
+           <p:rowEditor />
+           </p:column>
+   </p:dataTable>
+   </h:form>
+</ui:define>
 
 </ui:composition>
+
 </html>

@@ -17,13 +17,6 @@
 
 <ui:composition template="../../layout/templateAdmin.xhtml">
 
-<ui:define name="metadata">
-<f:metadata>
-<f:event listener="#{dpController.updateMappaDipendenti()}" type="preRenderView"/>
-</f:metadata>
-</ui:define>
-
-
 	<ui:define name="content">
 
 		<p:panel id="panel" header="Nuova Busta Paga">
@@ -31,9 +24,9 @@
 			<p:messages id="msgs" />
 			<h:form>
 Dipendente:<br />
-				<h:selectOneMenu value="#{dpController.idDip}"
+				<h:selectOneMenu value="#{bustaController.idDip}"
 					styleClass="input-text">
-					<f:selectItems value="#{dpController.getMappaDipendenti()}"></f:selectItems>
+					<f:selectItems value="#{bustaController.getMappaDipendenti()}"></f:selectItems>
 				</h:selectOneMenu>
 				<br />
 Data di emissione:<br />
@@ -49,7 +42,7 @@ Importo:<br />
 				<h:message for="importo" styleClass="colori" />
 				<br />
 				<h:commandButton value="Registra"
-					action="#{dpController.registraBustaPaga(busta)}" />
+					action="#{bustaController.registraBustaPaga(busta)}" />
 			</h:form>
 		</p:panel>
 	</ui:define>

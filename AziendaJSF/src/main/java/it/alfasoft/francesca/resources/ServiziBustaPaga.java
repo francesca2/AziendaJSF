@@ -19,7 +19,7 @@ public class ServiziBustaPaga {
 	@GET
 	public List<BustaPagaWS> getbuste(){
 		
-		return new ArrayList<BustaPagaWS>(s.getBustePaga());
+		return new ArrayList<BustaPagaWS>(s.getBustePagaWS());
 }
 	
 

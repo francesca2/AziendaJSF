@@ -1,6 +1,5 @@
 package it.alfasoft.francesca.controller;
 
-import it.alfasoft.francesca.bean.BustaPaga;
 import it.alfasoft.francesca.bean.DipendenteBean;
 import it.alfasoft.francesca.service.Servizi;
 
@@ -45,18 +44,10 @@ public class DipendenteController implements Serializable {
 	private List<DipendenteBean> listaDipendenti;
 
 	private Servizi s;
-	
-	//attributi che mi servono per le busta paga
-	private Map<String,Long> mappaDipendenti= new HashMap<String,Long>();
-	private long idDip;
 
 	public DipendenteController(){
-
-	}
-
-	@PostConstruct
-	public void init(){
 		s=new Servizi();
+		this.listaDipendenti=s.getDipendenti();
 	}
 	
     public List<String> getPosizioni() {
@@ -81,23 +72,6 @@ public class DipendenteController implements Serializable {
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
-	}
-	
-	public Map<String, Long> getMappaDipendenti() {
-
-		return mappaDipendenti;
-	}
-
-	public void setMappaDipendenti(Map<String, Long> mappaDipendenti) {
-		this.mappaDipendenti = mappaDipendenti;
-	}
-
-	public long getIdDip() {
-		return idDip;
-	}
-
-	public void setIdDip(long idDip) {
-		this.idDip = idDip;
 	}
 
 	public List<DipendenteBean> updateLista(){
@@ -129,22 +103,7 @@ public class DipendenteController implements Serializable {
                     new FacesMessage("Username già in uso"));
     		return "registraDipendente";
     	}
-    }
-    
-    public Map<String,Long> updateMappaDipendenti(){
-    	for(DipendenteBean d : s.getDipendenti())
-    	{
-    	mappaDipendenti.put(d.getNome()+" "+d.getCognome(), d.getId_Utente());
-    	}
-    	return mappaDipendenti;
-    }
-    
-    public String registraBustaPaga(BustaPaga b){
-    	DipendenteBean d=s.getDipendenteById(idDip);
-    	b.setDipendente(d);
-    	s.salvaBustaPaga(b);
-    	return "registraBustePaga?faces-reidrect-true";
-    }
+    }    
 
 }
 
