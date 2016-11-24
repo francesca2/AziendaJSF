@@ -18,6 +18,7 @@ public class LoginController {
 	private String password;
 	private boolean loggato;
 	private char ruolo;
+	private long id;
 	private Servizi s;
 	
 	public LoginController(){
@@ -57,6 +58,14 @@ public class LoginController {
 		this.ruolo = ruolo;
 	}
 
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
 	public String doLogin(){
 		UtenteBean u=s.getUtente(this.username);
 		String page = "login";
@@ -72,6 +81,7 @@ public class LoginController {
 		//se è verificato allora posso mandare ad home page
 		this.loggato = true;
 		setRuolo(u.getRuolo());
+		setId(u.getId_Utente());
 		switch(ruolo) {
 		case 'a' :
 			page= "/portali/amministratore/homeAdmin?faces-redirect=true";

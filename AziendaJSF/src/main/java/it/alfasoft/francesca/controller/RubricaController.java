@@ -37,14 +37,6 @@ public class RubricaController implements Serializable {
 		this.listaVoci = listaVoci;
 	}
 
-	public long getIdUt() {
-		return idUt;
-	}
-
-	public void setIdUt(long idUt) {
-		this.idUt = idUt;
-	}
-
 	public ServiziRubrica getSr() {
 		return sr;
 	}
@@ -53,11 +45,20 @@ public class RubricaController implements Serializable {
 		this.sr = sr;
 	}
 
+	public long getIdUt() {
+		return idUt;
+	}
+
+	public void setIdUt(long idUt) {
+		this.idUt = idUt;
+	}
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
 	
 	public List<Voce> findRubrica(long idUt){
+	
 		return null;
 	}
 	
